@@ -20,3 +20,10 @@ ul {
 img {
     width: 500px;
 }
+
+
+
+
+.completed {
+    text-decoration: line-through;
+}

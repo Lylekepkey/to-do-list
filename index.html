@@ -1,28 +1,44 @@
- <!DOCTYPE html>
- <html>
+<!DOCTYPE html>
+<html>
     <head>
         <meta charset="UTF-8">
         <meta name="description" content="Free Web tutorials">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
         <link rel="stylesheet" href="style.css">
+
+        <link > <!-- Add image -->
         <title>To-Do-List</title>
     </head>
     <body>
         <div class="container">
             <img src="pngwing.com (1).png">
             <div>
-                <input id="to-do-list" type="text" placeholder="Enter To-Do"> 
-                <div><button id="add">Add to list</button></div>
+                <input id="to-do-input" type="text" placeholder="Enter To-Do">
+                <button id="add-button">Add to list</button>
             </div>
-            <div id="to-do-list-1">
-                <ul >
-                    <li>List 1</li>
-                    <li>List 2</li>
-                    <li>List 3</li>
-                    
+            <div id="to-do-list">
+                <ul id="list">
+                    <li>Finish this task 
+                        <button class="delete-button">Delete</button> 
+                        <button class="tick-button">Tick Off</button>
+                    </li>
+
+
+                    <li style="text-decoration: line-through;">Feel depressed cause it's not working right
+                        <button class="delete-button">Delete</button> 
+                        <button class="tick-button">Tick Off</button>
+                    </li>
+
+
+                    <li>Sleep when done!!!!!
+                        <button class="delete-button">Delete</button> 
+                        <button class="tick-button">Tick Off</button>
+                    </li>
                 </ul>
             </div>
         </div>
+
+        <script src="to-do-list.js"></script>
     </body>
- </html>
+</html>
+ 
