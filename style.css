@@ -21,8 +21,15 @@ img {
     width: 500px;
 }
 
+input {
+    width: 500px;
+    height: 30px;
+}
 
-
+.list-width {
+    width: 600px;
+    /* background-color: azure; */
+}
 
 .completed {
     text-decoration: line-through;
