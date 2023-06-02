@@ -1,0 +1,22 @@
+* {
+
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    background-color: black;
+    color: wheat;
+}
+
+ul {
+    text-decoration: none;
+    list-style: none;
+}
+
+
+img {
+    width: 500px;
+}
