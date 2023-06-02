@@ -7,7 +7,7 @@ addInput.addEventListener('click', function() {
     const todo = todoInput.value;
 
     // Create new row
-    const newRow = document.createElement('li')
+    const newRow = document.createElement('ul')
 
     // create new list
     const newDo = document.createElement('li')
