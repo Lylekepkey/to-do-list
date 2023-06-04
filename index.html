@@ -1,47 +1,27 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
     <head>
-        <meta charset="UTF-8">
-        <meta name="description" content="Free Web tutorials">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    
         <link rel="stylesheet" href="style.css">
-
-        <link > <!-- Add image -->
-        <title>To-Do-List</title>
+        <title>TO-DO List</title>
     </head>
     <body>
         <div class="container">
-            <img src="pngwing.com (1).png">
-            <div>
-                <input id="to-do-input" type="text" placeholder="Enter To-Do">
-                <button id="add-button">Add to list</button>
-            </div>
-            <div id="to-do-list">
-                <ul id="list">
-                    <li class="list-width">
-                        <button class="tick-button">Tick Off</button>
-                        Finish this task 
-                        <button class="delete-button">Delete</button> 
-                    </li>
+            <img src="./pngwing.com (1).png">
+            <div id="items"></div>
+            <template id="itemTemplate">
+                <div class="item">
+                    <input type="checkbox" class="item-completed">
+                    <input type="text" class="item-description" placeholder="ToDo-input" id="input1">
+                    <button class="item-delete" id="delete">Delete</button>
+                </div>
+            </template>
 
-
-                    <li style="text-decoration: line-through;" class="list-width">
-                        <button class="tick-button">Tick Off</button>
-                        End up being depressed cause it's not working right
-                        <button class="delete-button">Delete</button> 
-                    </li>
-
-
-                    <li class="list-width">
-                        <button class="tick-button">Tick Off</button>
-                        Sleep when done!!!!!
-                        <button class="delete-button">Delete</button> 
-                    </li>
-                </ul>
-            </div>
+            <button id="add">Add input</button>
         </div>
-
-        <script src="to-do-list.js"></script>
+    <script src="to-do-list.js"></script>
     </body>
 </html>
- 

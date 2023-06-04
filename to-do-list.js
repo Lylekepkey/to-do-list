@@ -1,49 +1,82 @@
-const todoInput = document.getElementById('to-do-input');
-const addButton = document.getElementById('add-button');
-const todoList = document.getElementById('list');
+const ITEMS_CONTAINER = document.getElementById("items")
+const ITEM_TEMPLATE = document.getElementById("itemTemplate")
+const ADD_BUTTON = document.getElementById("add")
 
+let items = getItems();
 
-addButton.addEventListener('click', function() {
-    const todo = todoInput.value.trim();
+function getItems() {
+  const value = localStorage.getItem('todo-test') || "[]";
+  return JSON.parse(value)
+}
 
-    if (todo !== '') {
-        
-        const newListItem = document.createElement('li');
-        newListItem.textContent = todo;
+function setItems(items) {
+  const itemsJson = JSON.stringify(items)
+  localStorage.setItem('todo-test', itemsJson)
+}
 
-        
-        const deleteButton = document.createElement('button');
-        deleteButton.textContent = 'Delete';
-        deleteButton.classList.add('delete-button');
+function addItem() {
+  items.unshift({
+    description: "",
+    completed: false
+  });
 
-        const tickButton = document.createElement('button');
-        tickButton.textContent = 'Tick Off';
-        tickButton.classList.add('tick-button');
+  setItems(items)
+  refreshList()
+}
 
-        
-        newListItem.appendChild(deleteButton);
-        newListItem.appendChild(tickButton);
+function updateItem(item, key, value) {
+  item[key] = value;
+  setItems(items)
+  refreshList()
+}
 
-        
-        todoList.appendChild(newListItem);
+function deleteItem(index) {
+  items.splice(index, 1)
+  setItems(items)
+  refreshList()
+}
 
-        
-        todoInput.value = '';
+function refreshList() {
+  items.sort((a, b) => {
+    if (a.completed) {
+      return 1;
     }
+    if (b.completed) {
+      return -1;
+    }
+    return a.description < b.description ? -1 : 1;
+  });
+
+  ITEMS_CONTAINER.innerHTML = "";
+
+  for (let i = 0; i < items.length; i++) {
+    const item = items[i];
+    const itemElement = ITEM_TEMPLATE.content.cloneNode(true)
+    const descriptionInput = itemElement.querySelector(".item-description")
+    const completedInput = itemElement.querySelector(".item-completed")
+    const deleteButton = itemElement.querySelector(".item-delete")
+
+    descriptionInput.value = item.description;
+    completedInput.checked = item.completed;
+
+    descriptionInput.addEventListener("change", () => {
+      updateItem(item, "description", descriptionInput.value)
+    });
+
+    completedInput.addEventListener("change", () => {
+      updateItem(item, "completed", completedInput.checked)
+    });
+
+    deleteButton.addEventListener("click", () => {
+      deleteItem(i)
+    });
+
+    ITEMS_CONTAINER.appendChild(itemElement)
+  }
+}
+
+ADD_BUTTON.addEventListener('click', () => {
+  addItem()
 });
 
-
-todoList.addEventListener('click', function(event) {
-    if (event.target.classList.contains('delete-button')) {
-        const listItem = event.target.parentElement;
-        todoList.removeChild(listItem);
-    }
-});
-
-
-todoList.addEventListener('click', function(event) {
-    if (event.target.classList.contains('tick-button')) {
-        const listItem = event.target.parentElement;
-        listItem.classList.toggle('completed');
-    }
-});
+refreshList()
